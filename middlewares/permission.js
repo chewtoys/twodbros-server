@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 const PostController = require('../routes/posts/controller');
 
 const checkAccountOwner = (req, res, next) => {
@@ -24,7 +22,7 @@ const checkAdminOrPostOwner = async (req, res, next) => {
   res.status(403).json({ error: 'No access permission' });
 };
 
-module.exports = (permissions) => {
+module.exports = permissions => {
   if (!Array.isArray(permissions)) permissions = permissions.split(',');
 
   if (permissions.includes('accountOwner')) {

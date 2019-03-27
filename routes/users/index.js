@@ -23,7 +23,7 @@ const signUp = async (req, res, next) => {
   }
 };
 
-const signIn = async (req, res) => {
+const signIn = (req, res) => {
   const { user } = req;
   const token = generateAccessToken(user.toObject());
   res.status(200).json({ username: user.username, accessToken: token });

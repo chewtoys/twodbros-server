@@ -2,7 +2,7 @@
 
 const log = require('../configs/log');
 
-module.exports = (app) => {
+module.exports = app => {
   app.use('/users', require('./users'));
   app.use('/posts', require('./posts'));
   app.use('*', (req, res) => res.status(404).end());

@@ -9,7 +9,8 @@ mongoose.set('useCreateIndex', true);
 exports.init = () => {
   const uri = process.env.MONGODB_URI;
   const dbname = process.env.MONGODB_DBNAME;
-  mongoose.connect(`${uri}/${dbname}`)
+  mongoose
+    .connect(`${uri}/${dbname}`)
     .then(() => log.info('MongoDB connected'))
     .catch(err => log.error(err));
 };

@@ -95,7 +95,17 @@ router.get('/', validators.getPosts, decodeToken, identify.adminRequest, getPost
 router.get('/tags', getPostTags);
 router.get('/:id', decodeToken, identify.adminRequest, lookupId, getPost, postProcess.increaseViews);
 router.post('/', authorize, validators.createPost, createPost, postProcess.syncSlugs);
-router.put('/:id', authorize, permission('admin,postOwner'), validators.updatePost, identify.publishedPost, identify.adminRequest, lookupId, updatePost, postProcess.syncSlugs);
+router.put(
+  '/:id',
+  authorize,
+  permission('admin,postOwner'),
+  validators.updatePost,
+  identify.publishedPost,
+  identify.adminRequest,
+  lookupId,
+  updatePost,
+  postProcess.syncSlugs
+);
 router.put('/:id/status', authorize, permission('admin'), validators.changePostStatus, lookupId, changePostStatus);
 router.delete('/:id', authorize, permission('admin'), lookupId, deletePost);
 

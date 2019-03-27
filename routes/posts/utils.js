@@ -1,25 +1,18 @@
 const { pickBy, identity, intersection } = require('lodash');
 
-const allowedSort = [
-  'newest', 'oldest',
-  'lastUpdate', '-lastUpdate',
-  'views', '-views',
-  'readTime', '-readTime',
-];
+const allowedSort = ['newest', 'oldest', 'lastUpdate', '-lastUpdate', 'views', '-views', 'readTime', '-readTime'];
 
 exports.removeFalsey = obj => pickBy(obj, identity);
 
-exports.parseConditions = (query) => {
-  const {
-    author, tag, year, month, date, q, adminRequest,
-  } = query;
+exports.parseConditions = query => {
+  const { author, tag, year, month, date, q, adminRequest } = query;
   const conditions = {};
 
   if (author) conditions.author = author;
   if (tag) conditions.tags = tag;
 
-  let lowerBound;
-  let upperBound;
+  let lowerBound = null;
+  let upperBound = null;
   if (year && month && date) {
     lowerBound = new Date(year, month - 1, date);
     upperBound = new Date(year, month - 1, date + 1);
@@ -39,14 +32,15 @@ exports.parseConditions = (query) => {
   return conditions;
 };
 
-exports.parseProjection = (query) => {
+exports.parseProjection = query => {
   if (query.fields) return `slug ${query.fields.split(',').join(' ')}`;
 };
 
-exports.parseSort = (query) => {
+exports.parseSort = query => {
   if (query.sort) {
     const sort = intersection(allowedSort, query.sort.split(','));
-    return sort.join(' ')
+    return sort
+      .join(' ')
       .replace('newest', '-createdAt')
       .replace('oldest', 'createdAt')
       .replace('lastUpdate', '-updatedAt')
@@ -54,12 +48,12 @@ exports.parseSort = (query) => {
   }
 };
 
-exports.parsePagination = (query) => {
+exports.parsePagination = query => {
   const page = parseInt(query.page, 10);
   const size = parseInt(query.pageSize, 10);
   return {
-    page: (!page || page <= 0) ? 1 : page,
-    size: (!size || size <= 0) ? 10 : size,
+    page: !page || page <= 0 ? 1 : page,
+    size: !size || size <= 0 ? 10 : size
   };
 };
 

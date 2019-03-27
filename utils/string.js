@@ -11,23 +11,25 @@ const multipleHyphens = /--+/g;
 const startingHyphens = /^-+/;
 const endingHyphens = /-+$/;
 
-const removeVietnameseAccents = str => str
-  .replace(vnA, 'a')
-  .replace(vnE, 'e')
-  .replace(vnI, 'i')
-  .replace(vnO, 'o')
-  .replace(vnU, 'u')
-  .replace(vnY, 'y')
-  .replace(vnD, 'd');
+const removeVietnameseAccents = str =>
+  str
+    .replace(vnA, 'a')
+    .replace(vnE, 'e')
+    .replace(vnI, 'i')
+    .replace(vnO, 'o')
+    .replace(vnU, 'u')
+    .replace(vnY, 'y')
+    .replace(vnD, 'd');
 
-const slugify = str => removeVietnameseAccents(str.toString().toLowerCase())
-  .replace(spaces, '-')
-  .replace(nonWordChars, '')
-  .replace(multipleHyphens, '-')
-  .replace(startingHyphens, '')
-  .replace(endingHyphens, '');
+const slugify = str =>
+  removeVietnameseAccents(str.toString().toLowerCase())
+    .replace(spaces, '-')
+    .replace(nonWordChars, '')
+    .replace(multipleHyphens, '-')
+    .replace(startingHyphens, '')
+    .replace(endingHyphens, '');
 
 module.exports = {
   removeVietnameseAccents,
-  slugify,
+  slugify
 };

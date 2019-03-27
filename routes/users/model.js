@@ -4,12 +4,13 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
-  role: { type: String, enum: ['admin', 'user'], default: 'user' },
+  role: { type: String, enum: ['admin', 'user'], default: 'user' }
 });
 
 userSchema.pre('save', function hashPassword(next) {
-  bcrypt.hash(this.password, 10)
-    .then((hash) => {
+  bcrypt
+    .hash(this.password, 10)
+    .then(hash => {
       this.password = hash;
       next();
     })
