@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 5432,
+  "user": "postgres",
+  "password": "465318ee255235720a5fd2d9ab92735e",
+  "database": "blog_jerni"
+}

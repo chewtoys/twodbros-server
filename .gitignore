@@ -55,10 +55,12 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env*
+.env
 
 # next.js build output
 .next
 
-# WebStorm .idea folder
-.idea/
+# others
+package-lock.json
+.vscode/
+_deprct/

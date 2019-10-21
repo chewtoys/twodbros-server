@@ -23,12 +23,9 @@ logs/
 *.md
 LICENSE
 
-# Script directory
-scripts/
-
 # Git
 .git/
 .gitignore
 
 # Project directories
-.idea/
+.vscode/
