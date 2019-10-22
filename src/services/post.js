@@ -1,15 +1,26 @@
+const { log } = require('@vietduc/common');
 const postgres = require('@vietduc/postgres');
 
-const findAll = () => {
+const findAll = async () => {
     const sql = `SELECT * FROM posts;`;
-    return postgres.exec(sql);
+    const [err, res] = await postgres.exec(sql);
+    if (err || !Array.isArray(res)) {
+        log.error('Error querying posts');
+        return [];
+    }
+    return res;
 };
 
 module.exports.findAll = findAll;
 
-const findOne = ({ id }) => {
+const findOne = async ({ id }) => {
     const sql = `SELECT * FROM posts WHERE id = '${id}';`;
-    return postgres.exec(sql);
+    const [err, res] = await postgres.exec(sql);
+    if (err || !Array.isArray(res) || !res[0]) {
+        log.error('Error querying posts');
+        return null;
+    }
+    return res[0];
 };
 
 module.exports.findOne = findOne;
