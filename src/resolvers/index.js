@@ -1,5 +1,5 @@
-const { requireDir } = require('../utils/loader');
+const common = require('@vietduc/common');
 
-const resolvers = requireDir(__dirname, ['index.js']);
+const resolvers = common.requireDir(__dirname, ['index.js']);
 
 module.exports = resolvers;
