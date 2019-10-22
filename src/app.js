@@ -12,4 +12,4 @@ server.listen(serviceCfg.service_port).then(() => {
   log.info(`server running on port ${serviceCfg.service_port}`);
 });
 
-postgres.setLogger(log);
+postgres.init({ logger: log });
