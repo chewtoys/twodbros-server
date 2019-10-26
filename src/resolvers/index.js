@@ -1,5 +1,13 @@
 const common = require('@vietduc/common');
 
-const resolvers = common.requireDir(__dirname, ['index.js']);
+let resolvers = {};
+const resolverArr = common.requireDir(__dirname, ['index.js']);
+
+for (const resolver of resolverArr) {
+    resolvers = {
+        ...resolvers,
+        ...resolver
+    };
+}
 
 module.exports = resolvers;
