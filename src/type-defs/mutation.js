@@ -4,6 +4,7 @@ const query = gql`
     type Mutation {
         createPost(post: PostCreateInput!): Post!
         updatePost(id: String!, post: PostUpdateInput!): Post!
+        removePost(id: String!): Post!
     }
 
     input PostCreateInput {

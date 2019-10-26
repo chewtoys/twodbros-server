@@ -13,7 +13,7 @@ const post = gql`
     enum Status {
         EDITING
         PUBLISHED
-        DELETED
+        REMOVED
     }
 `;
 

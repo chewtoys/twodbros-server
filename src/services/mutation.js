@@ -53,3 +53,22 @@ const update = async (id, updates) => {
 };
 
 module.exports.update = update;
+
+const remove = async id => {
+    const sql = `UPDATE posts SET status = 'REMOVED' WHERE id = '${id}';`;
+    const { err } = await postgres.exec(sql);
+    if (err) {
+        log.error('Error removing the post');
+        log.error(err);
+        throw err;
+    }
+    const post = await findOne({ id });
+    if (!post) {
+        const err2 = new Error('Error removing a non-existent post');
+        log.error(err2);
+        throw err2;
+    }
+    return post;
+};
+
+module.exports.remove = remove;
