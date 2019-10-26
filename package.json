@@ -1,6 +1,6 @@
 {
     "name": "jerni",
-    "version": "3.0.0-beta1",
+    "version": "3.0.0",
     "description": "A minimal blogging GraphQL API",
     "main": "src/app.js",
     "scripts": {

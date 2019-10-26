@@ -1,7 +1,8 @@
 const { log } = require('@vietduc/common');
 const postgres = require('@vietduc/postgres');
+const { sqlFromFilter } = require('../utils/post');
 
-const findAll = async () => {
+const findAll = async filter => {
     const sql = `SELECT
         id,
         title,
@@ -9,7 +10,8 @@ const findAll = async () => {
         tags,
         content,
         status
-        FROM posts;`;
+        FROM posts
+        ${sqlFromFilter(filter)};`;
     const { err, res } = await postgres.exec(sql);
     if (err || !Array.isArray(res)) {
         if (err) log.error('Error querying posts');
