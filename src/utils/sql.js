@@ -26,3 +26,14 @@ const sqlFromFilter = f => {
 };
 
 module.exports.sqlFromFilter = sqlFromFilter;
+
+const sqlFromUpdate = u => {
+    const sets = [];
+    if (u.title) sets.push(`title = '${u.title}'`);
+    if (u.tags) sets.push(`tags = '{"${u.tags.join('", "')}"}'`);
+    if (u.content) sets.push(`content = '${u.content}'`);
+    if (u.status) sets.push(`status = '${u.status}'`);
+    return ` SET ${sets.join(', ')} `;
+};
+
+module.exports.sqlFromUpdate = sqlFromUpdate;
