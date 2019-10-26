@@ -61,6 +61,4 @@ typings/
 .next
 
 # others
-package-lock.json
 .vscode/
-_deprct/

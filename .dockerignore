@@ -16,6 +16,9 @@ logs/
 # ESLint files
 .eslint*
 
+# Prettier files
+.prettier*
+
 # env files
 .env*
 
