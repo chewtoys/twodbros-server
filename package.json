@@ -5,7 +5,7 @@
     "main": "src/app.js",
     "scripts": {
         "start": "node src/app.js",
-        "dev": "nodemon -r dotenv/config src/app.js"
+        "dev": "nodemon src/app.js"
     },
     "dependencies": {
         "@vietduc/common": "^1.0.4",
@@ -14,7 +14,7 @@
         "graphql": "^14.5.8"
     },
     "devDependencies": {
-        "eslint": "^6.5.1",
+        "eslint": "^6.6.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^6.4.0",
         "eslint-plugin-import": "^2.18.2",
