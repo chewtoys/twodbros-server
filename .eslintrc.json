@@ -1,39 +1,7 @@
 {
-    "extends": ["airbnb-base", "plugin:prettier/recommended"],
-    "plugins": ["import", "prettier"],
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 9,
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true
-        }
-    },
-    "rules": {
-        "camelcase": [
-            "error",
-            {
-                "properties": "never",
-                "ignoreDestructuring": true
-            }
-        ],
-        "consistent-return": "off",
-        "no-continue": "off",
-        "no-plusplus": [
-            "error",
-            {
-                "allowForLoopAfterthoughts": true
-            }
-        ],
-        "no-restricted-syntax": "off",
-        "prefer-destructuring": [
-            "error",
-            {
-                "array": false
-            }
-        ]
-    }
+    "extends": [
+        "airbnb-base",
+        "plugin:jest/recommended",
+        "@vietduc"
+    ]
 }
